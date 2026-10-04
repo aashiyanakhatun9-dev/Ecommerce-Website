@@ -1,0 +1,25 @@
+import { useContext } from "react";
+import BredCrums from "../Components/Bredcrums/BredCrums";
+import ProductDisplay from "../Components/ProductDisplay/ProductDisplay";
+import { ShopContext } from "../Context/ShopContext";
+import { useParams } from "react-router-dom";
+import Description from "../Components/Description/Description";
+import RelatedProducts from "../Components/RelatedProducts/RelatedProducts";
+
+
+const Product = () => {
+  const { all_product } = useContext(ShopContext);
+  const { productId } = useParams();
+  const product = all_product.find((e) => e.id === Number(productId) );
+
+  return (
+    <div>
+      <BredCrums product={product} />
+      <ProductDisplay product={product} />
+      <Description />
+      <RelatedProducts />
+    </div>
+  );
+};
+
+export default Product;
